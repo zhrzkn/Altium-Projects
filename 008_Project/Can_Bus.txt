@@ -1,0 +1,1 @@
+Schematic designs of MCP2551T-I/SN and TJA1051 components, which are frequently used in CAN BUS communication, have been made.
