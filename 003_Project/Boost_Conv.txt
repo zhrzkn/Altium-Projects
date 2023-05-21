@@ -1,0 +1,15 @@
+Boost converter;
+
+Thanks to the coil, the energy cycle is provided.
+
+It increases the input voltage at the output.
+
+The diode is closed when the switching element is open.
+
+VL=Vi with switch on
+
+VL=Vi-Vo when key is cut
+
+The circuit is based on the TPS61040DB datasheet.
+Input and output capacitors (C1 and C3) are more advantageous when Nichicon brand is chosen, as they are not ordinary like Chinese made and have a long life.
+Since R1 and R2 resistors are in Feedback, their tolerances should be low.
