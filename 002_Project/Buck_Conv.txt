@@ -1,0 +1,14 @@
+Buckconverter;
+
+The circuit is based on the LM2596 datasheet.
+
+A protection diode can be thrown into the input.
+
+The diode loops between the load and the coil. It is a very important element to ensure the continuation of the load.
+The reverse bias voltage of the diode is very important. 20% 30% times more output is selected.
+
+When output voltage is 5V and Input voltage is 12V; we are looking Table 9-3. in datasheet and we select inductor is 33uH and output capacitor is 220uF.
+
+Calculate R1 and R2 resistors are in Feedback, Vout= Vref*(1+ R2/R1)
+
+Calculate CFF = 1/(31*R2*10^3)
