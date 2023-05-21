@@ -1,0 +1,5 @@
+A low-dropout regulator is a DC linear voltage regulator that can regulate the output voltage even when the supply voltage is very close to the output voltage.
+
+The advantages of an LDO regulator over other DC-to-DC voltage regulators include the absence of switching noise, smaller device size and greater design simplicity. 
+
+The disadvantage is that, unlike switching regulators, linear DC regulators must dissipate power, and thus heat, across the regulation device in order to regulate the output voltage.
