@@ -33,10 +33,15 @@ The inductor value determines the maximum switching frequency of the converter.
 
  
 The output voltage is calculated as;
+
+![Output-Voltage](https://github.com/zhrzkn/Altium-Projects/tree/main/003_Project/output-voltage.png)
  
 The lower the switching frequency of the converter, the larger the feedforward capacitor value required. A good starting point is to use a 4.7pF feedforward capacitor.
+
 The line regulation of the TPS6104x depends on the voltage ripple on the feedback pin. Usually a 50 mV peak-to-peak voltage ripple on the feedback pin FB gives good results. Increasing the output capacitor value reduces the output voltage ripple.
+
 For good input voltage filtering, low ESR ceramic capacitors are recommended. A 4.7-μF ceramic input capacitor is sufficient for most of the applications.
+
 To achieve high efficiency a Schottky diode should be used;
 Voltage-DC Reverse (Vr) =   30 V
 Current-Average Rectified (Io) = 5A
