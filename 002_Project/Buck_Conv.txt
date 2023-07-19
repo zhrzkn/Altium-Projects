@@ -12,3 +12,22 @@ When output voltage is 5V and Input voltage is 12V; we are looking Table 9-3. in
 Calculate R1 and R2 resistors are in Feedback, Vout= Vref*(1+ R2/R1)
 
 Calculate CFF = 1/(31*R2*10^3)
+
+In the project, it was desired 12V to 5V convert.
+
+The LM2596 power converter regulator is an easy-to-use, nonsynchronous.
+
+Requiring a minimum number of external components, these regulators are simple to use and include internal frequency compensation, and a 150-kHz fixed-frequency oscillator. Thus allowing smaller sized filter components than what can be required with lower frequency switching regulators.
+
+Thermal shutdown and current-limit protection.
+
+A low ESR aluminum or tantalum bypass capacitor is required between the input pin and ground pin. It must be placed near the regulator using short leads. This capacitor prevents large voltage transients from occurring at the input, and provides the instantaneous current required each time the switch turns ON.
+From the inductor value selection guide the inductance region intersected by the 12-V horizontal line and the 3-A vertical line is 33 μH.
+
+Cout: This capacitor must be placed close to the IC using short capacitor leads and short copper traces. The capacitor voltage rating for electrolytic capacitors must be at least 1.5 times greater than the output voltage, and often require much higher voltage ratings to satisfy the low ESR requirements for low output ripple voltage. For a 5-V output, a capacitor voltage rating of at least 7.5 V is required. But even a low ESR, switching grade, 220-μF, 10-V aluminum electrolytic capacitor can exhibit approximately 225 mΩ of ESR.
+
+The catch diode current rating must be at least 1.3 times greater than the maximum load current. The most stressful condition for this diode is an overload or shorted output condition. In this project, a 5-A, 20-V, 1N5823 Schottky diode will provide the best performance, and will not be overstressed even for a shorted output. The reverse voltage rating of the diode must be at least 1.25 times the maximum input voltage. 
+
+Cin: A low ESR aluminum or tantalum bypass capacitor is required between the input pin and ground pin to prevent large voltage transients from appearing at the input. This capacitor must be placed close to the IC using short leads.
+
+Cff: For output voltages greater than approximately 10 V, an additional capacitor is required. It provides additional stability for high output voltages, low input or output voltages, or very low ESR output capacitors, such as solid tantalum capacitors. 
