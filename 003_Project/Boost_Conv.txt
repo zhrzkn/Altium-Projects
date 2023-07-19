@@ -29,12 +29,12 @@ The switch turns off as soon as the inductor current reaches the internally set 
 
 The inductor value determines the maximum switching frequency of the converter. 
 
-![Selection-Ind](https://github.com/zhrzkn/Altium-Projects/tree/main/003_Project/inductor.png)
+![Selection-Ind](https://github.com/zhrzkn/Altium-Projects/tree/main/003_Project/inductor.png).
 
  
 The output voltage is calculated as;
 
-![Output-Voltage](https://github.com/zhrzkn/Altium-Projects/tree/main/003_Project/output-voltage.png)
+![Output-Voltage](https://github.com/zhrzkn/Altium-Projects/tree/main/003_Project/output-voltage.png).
  
 The lower the switching frequency of the converter, the larger the feedforward capacitor value required. A good starting point is to use a 4.7pF feedforward capacitor.
 
