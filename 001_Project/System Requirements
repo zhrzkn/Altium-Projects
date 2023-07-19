@@ -1,0 +1,20 @@
+It consists of 4 parts.
+It is the USB-C connector that provides our power input and connects via USB to a microcontroller. If we can't find MCU that supports USB, we can use USB to UART. We chose USB with 5V output and USB 2.0 connection.
+The USB connector supplies 5V to the buck converter.
+The buck converter also feeds the MCU.
+We have added a peripheral to our device and design, where we choose a 3v3 feed. This peripheral is the motion sensor Internal Measurement Unit.
+SPI communication is chosen for robustness and speed.
+
+Since BGA is expensive, LQPF case and STM32F04 from STM family were chosen.
+While arranging the regulator, the input and output voltages, the current needed switching frequencies should be checked.
+Our low current MCU design will run at about 50 to 100mA, which is pretty low.
+We turn to a buck converter with an output current of 200mA-300mA, which is expected to pass from High Voltage to Low Voltage, and the output output will be 3V3.
+The switching frequency is important; A higher switching speed allows us to use smaller parts. We will choose the low value inductor found.
+LTC3405; Voltage - Input (Max) = 5.5V /// Current - Output = 300mA /// Frequency - Switching = 1.5MHz.
+
+The unit of inertia includes angles, roll speeds, pitch speeds, accelerometers and gyroscopes for you to get the accelerations.
+6-axis (3 accelerometers are 3 gyroscope gears.) SPI communication 3V3 supply voltage BMI088 is selected.
+
+protect USB-C; The 6-contact connection is a power connection only. It means it has 2 ground, 2VBUS and 2 communication channel pins. Data pins for it cannot be found. That's why we choose USB-C with more than 6 contacts.
+
+ 
