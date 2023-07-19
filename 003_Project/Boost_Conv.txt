@@ -29,7 +29,8 @@ The switch turns off as soon as the inductor current reaches the internally set 
 
 The inductor value determines the maximum switching frequency of the converter. 
 
-![alt text](https://github.com/[zhrzkn]/[Altium-Projects]/blob/[003_Project]/inductor.png?raw=true)
+![Selection-Ind](https://github.com/zhrzkn/Altium-Projects/tree/main/003_Project/inductor.png)
+
  
 The output voltage is calculated as;
  
