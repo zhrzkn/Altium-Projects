@@ -13,3 +13,32 @@ VL=Vi-Vo when key is cut
 The circuit is based on the TPS61040DB datasheet.
 Input and output capacitors (C1 and C3) are more advantageous when Nichicon brand is chosen, as they are not ordinary like Chinese made and have a long life.
 Since R1 and R2 resistors are in Feedback, their tolerances should be low.
+
+
+In the project, it was desired 3.3V to 12V convert.
+
+It operates with a switching frequency up to 1 MHz. This frequency allows the use of small external components using ceramic as well as tantalum output capacitors.
+
+It is possible to tailor the design to the specific application current limit requirements. A lower current limit supports applications requiring lower output power and allows the use of an inductor with a lower current rating and a smaller form factor. 
+
+The converter monitors the output voltage, and as soon as the feedback voltage falls below the reference voltage of typically 1.233 V, the internal switch turns on and the current ramps up.
+
+The selection of the inductor together with the nominal load current, input and output voltage of the application determines the switching frequency of the converter.
+
+The switch turns off as soon as the inductor current reaches the internally set peak current of typically 400 mA.
+
+The inductor value determines the maximum switching frequency of the converter. 
+
+![alt text](https://github.com/[zhrzkn]/[Altium-Projects]/blob/[003_Project]/inductor.png?raw=true)
+ 
+The output voltage is calculated as;
+ 
+The lower the switching frequency of the converter, the larger the feedforward capacitor value required. A good starting point is to use a 4.7pF feedforward capacitor.
+The line regulation of the TPS6104x depends on the voltage ripple on the feedback pin. Usually a 50 mV peak-to-peak voltage ripple on the feedback pin FB gives good results. Increasing the output capacitor value reduces the output voltage ripple.
+For good input voltage filtering, low ESR ceramic capacitors are recommended. A 4.7-μF ceramic input capacitor is sufficient for most of the applications.
+To achieve high efficiency a Schottky diode should be used;
+Voltage-DC Reverse (Vr) =   30 V
+Current-Average Rectified (Io) = 5A
+Voltage-Forward = 370mV @ 5A
+Current-Reverse = 10mA @ 30V
+
