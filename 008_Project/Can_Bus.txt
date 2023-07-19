@@ -1,1 +1,7 @@
 Schematic designs of MCP2551T-I/SN and TJA1051 components, which are frequently used in CAN BUS communication, have been made.
+
+
+MCP2551;
+while the shape of the waves is the same, the voltages used to transmit the signal are different. The MCP2551 is a high-speed CAN transceiver.
+It uses a differential signal whose recessive state is 0 V and dominant state is 2 V. Single-wire CAN is a one-wire signal whose recessive state is 0 V and dominant state is 4 V.
+It is not a robust solution for a tool to be used across multiple applications.
