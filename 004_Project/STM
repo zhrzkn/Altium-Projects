@@ -1,0 +1,16 @@
+32-bit MCU
+64 or 128 KB Flash
+USB, CAN
+72 MHz maximum frequency
+64 or 128 Kbytes of Flash memory
+2.0 to 3.6 V application supply and I/Os
+4 to 16 MHz crystal oscillator 
+7-channel DMA controller 
+Peripherals supported: timers, ADC, SPIs, I2Cs and USARTs
+
+48 pin
+
+The high-speed external (HSE) clock can be supplied with a 4 to 16 MHz crystal/ceramic resonator oscillator; ABM8G-16MHZ-4Y-T3. It's load capacitor is 10pF. CL=2*(CL0 - Cs)= 2*(10-5)pF=10pF
+** http://www.mehmetalikucuk.com/dersler/altium-designer-dersleri-7-osilator-secimi/
+
+We need to power supply. I use AMS1117-3.3 LDO
