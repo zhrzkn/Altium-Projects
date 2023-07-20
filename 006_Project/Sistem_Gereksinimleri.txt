@@ -1,10 +1,26 @@
-Sistem 220V AC 50Hz Türkiye ev şebeke baplantısı ile çalışabilmelidir.
-Sistemden kullanıcıya kullanabileceği 12V DC ve 5V DC güç çıkışları olmalıdır.
-Sistem USB arayüzü ile bilgisaara bağlanabilir ve veri aktarabilir olmalıdır.
-Sistem gerçek zamanlı saat bilgisini kullanıcıya verebilmelidir.
-Sistem ortam sıcaklık verisini anlık olarak kullanıcıya aktarabilmelidir.
-Bir hareket algılandığında sistem kullanıcıya veri gönderebilmelidir.
-Bir hareket algılandığında kullanıcı isterse sesli veya görüntülü uyarı alabilecektir.
-Sistem hareket algılanabilecek ortamda güvenlik kamerası görünümüne sahip olmalıdır.
-Sistem Wi-Fi özelliği ile tüm verileri kullanıcıya gönderebilecektir.
-Kullanıcı isterse işlemci içerisinde koşan yazılıma müdahele edebilecektir.
+The system should be able to work with 230V AC 50Hz Türkiye home network connection. A simple AC-DC converter is made. Flyback has not been dealt with. For this, a rectifier circuit has been made and a transformer has been selected. While Primary=230V, Secondary=12V. In addition, instead of using separate diodes for the bridge diode, bridge integrated is preferred.
+
+There should be 12V DC and 5V DC power outputs that can be used from the system to the user. DC-DC Converter is selected separately to convert from 12V to 5V and 3V3.
+
+The system must be able to connect to a computer and transfer data via USB interface. Micro-B USB has been chosen for this.
+
+The system should be able to provide real-time clock information to the user. For this, Real Time Clock is selected. We narrowed down the selection in I2C format. Supply Voltage is also an important element.
+
+The system should be able to instantly transfer the ambient temperature data to the user. PTC sensor is selected for temperature outside. PTC is directly proportional to temperature. A sensor with SPI communication is selected for temperature inside.
+
+The system should be able to send data to the user when a motion is detected. PIR sensor is used for this. The well-known LHI 878 was chosen.
+
+When a motion is detected, the user will be able to receive an audible or visual warning. For audible warning, 5V and DC input buzzer is selected.
+
+The system must have a security camera view in an environment where motion can be detected. In order to give the appearance of a security camera on the card with the sensor, an n channel mosfet that will turn ON/OFF a red led has been selected.
+
+The system will be able to send all data to the user with the Wi-Fi feature. The familiar ESP32-WROOM was chosen for the Wi-Fi module.
+If the user wishes, he will be able to interfere with the software running in the processor.
+
+When selecting the MCU, a processor from the 44-pin LQFP package STM32F1 family was selected. It has been paid attention to have ADC, I2C, SPI, UART communication.
+
+While selecting Relay to ON/OFF the lighting system in the garden, a component with more than 2A, coil voltage 5V and 12V and capable of relaying 50VAC was selected.
+
+A slide switch is selected to ON/OFF the sensor mode.
+
+Data will be sent from card 2 to card 1 via ADC. Since there will be connection and cable in between, a buffer circuit should be made and an opamp is used for this. The standard is used OPA314, which is widely used in the market.
