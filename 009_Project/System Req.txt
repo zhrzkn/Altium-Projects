@@ -1,0 +1,56 @@
+Flyback düşük güçlü uygulamalarda kullanılır. Kesintili modda çalışan dönüştürücüdür.
+Vin= 230V +-%15;   195 < Vin < 265 VAC 
+Bu projede 195V'da çalışmasını istiyoruz.
+195 ve 265 RMS değerdir, ölçü aleti ile ölçüldüğünde bu değerler görülür.
+195 * kök2 = 276V ise peak değerdir, osiloskop ile ölçüldüğünde bu değer görülür.
+Bir ripple değeri belirlenmelidir. Genelde bu değer %10 ile %20 arası seçilir. Bu projede %15 olarak seçilmiştir. 276'nın %15'i de 235V'a eşittir.
+Tasarımını yaptığımız dönüştürücümüz giriş DC geriliminin -doğrultulmuş gerilimin- min. değerinde DCM çalışmayı sağlamalıdır.
+Kondansatör seçilirken; 230VAC +-%15 -- 1W için 1uF cap. seçilirken, Universal input -- 1W için 2uF cap seçilir.
+Bu projede 15W olduğu için 15uF ya da bir üstü olan 22uF cap. seçilebilir. 
+50Hz şebeke gerilimini doğrulttuk, doğrultulmuş giriş geriliminin tepe değerinde, giriş gerilimi cap. deşarj etmiş durumdadır. Doğrultulmuş gerilim cap. gerilimine eşit olunca şebeke tekrardan cap. şarj edecektir.
+Dalgalanan gerilimden dolayı sürekli şarj-deşarj durumu olacaktır. Toplam deşarj olma süresi de 276sin(wt)235 --> 238¨; ((238-9)/180) ** 10ms = 8.22ms bulunur.
+
+Flyback düşük güç uygulamalarında DCM modunda çalışması istenir.
+CCM'de trafonun primer akımı sıfıra düşmemektedir. Yani şebekeden o anahtarlama aralığında 10br enerji çekiyorsak, bunun 6br yüke aktarırken kalan 4br yüke aktarmıyoruz. 
+Bunun yerine DCM'de çalışan trafo olsaydı, 6br enerji çekip 6br tamamı yüke aktarırdık. Bu sayede trafonun boyutu küçülmüş olmaktadır.
+Ayrıca DCM modda anahtaralama elemanı 0 akımda anahtarlanmaktadır. Yani iletime girme kayıpları sıfıra düşmektedir. Gerilim ve akım çarpışması önlenmektedir.
+50W'a kadar çalışmalarda DCM flyback tasarlanmıştır.
+
+Trafo oluşturulacağı için Duty cycle (D), Primer gerilimi (L) ve Primer akımının peak değeri (ILP) hesaplanmalıdır.
+Anahtar iletimdeyken primer enerji depolanmaktadır. Anahtar kesimdeyken ise seconderdeki çıkış diyodu iletime girmekte ve primerde depolanan enerji seconder tarafından çıkışa aktarılmaktadır.
+
+Kaçakta depolanan enerji aktarılamadığı için snubber yapısı kullanılır.
+Snubber; Yarı iletken cihazlarını korumak için kullanılan sönümleme devresidir.
+Tek fazlı uygulamada 100V civarında yansıyan gerilim seçilir.
+Yansıyan gerilim, çıkıştaki diyot iletimdeyken primer tarafa yansıyan gerilimdir.
+Eğer Vyansıyan 30V kadar düşük olursa, seconder tarafa aktarılacak güç snubber tarafa aktarılır ve boşu boşuna snubber gücü arttırılmış olur. 
+Eğer Vyansıya yüksek olursa, mosfete gelen ilave gerilim stresi artar. Mosfet gerilimi yükselir ve EMC'den kötü performans elde edilir.
+
+!!!  Trafoya uygulanan gerilimin ortalaması 0 olmak zorundadır. Aksi takdirde bobinde  DC gerilim oluşur, doyuma girer.
+
+Flyback dönüştürücülerde genellikle mosfet kullanılır. Mosfetin akımı seçilirken RMS değerine dikkat edilir.
+
+Snubber devresi tasarlanırken, TVS diyot kullanılmıştır;
+Snubber gerilimi gerilim kaynağından yukarıda olmalıdır. Hiçbir akım akışı olmasa dahi  snubber gerilimi 90V olacaktır ve bir de kaçaktan enerji aktarılacaktır, kaçağın resetlenmesi gerekmektedir dolayısıyla Vsnubber > Vyansıyan olmalıdır.
+Tabii bunun da bir limiti vardır.
+Tek fazlılarda 200V'luk yeterli olmaktadır.
+Eğer daha yüksek seçilirse, mosfet bozulur, EMC'de kötü performans alınır.
+Eğer daha düşük seçilirse, kaçak akım resetleme süresi uzar.
+Bu diyot için kılıf seçilirken güç hesaplanılır. Ayrıca datasheetteki "Typical hermal Resistance Juntion"a bakılır. Bu yüzden TVS kılıf seçilmiştir.
+**SMBJ200CA'nın datasheeti incelenmiş ve sıcaklık yüzünden SMB kılıf elenmiştir.
+
+Çıkış diyotu genellikle schottky seçilmektedir.
+
+Snubber diyodunun yanındaki diyot seçilirken;
+Yüksek gerilimli olmak zorundadır. 
+Anahtar kesimdeyken, snubber iletimdeyken, LKG enerjisini bu diyot üzerinden TVS'ye aktarmaktadır. TVS'nin cap. 200V ile doludur.
+Anahtar iletime girdiği anda diyot üzerinde 573V'luk gerilim geleceği için 1kV'luk diyot kullanımı uygun olmaktadır.
+Bu diyot için US1M kullanılmıştır.
+
+NTC inrush akımlarını düşürmek için kullanılmaktadır.
+Inrush: Köprü diyottan sonraki capacitor, şebekeye ilk bağlandığı anda boş durumdadır.
+Şebeke giriş gerilimine bağlandığında yani sinüsün peak değerindeyken boş ve iç direnci düşük olan capacitörü yüksek gerilimi aniden şarj edecektir.
+Bu da kısa devreye tekabül etmektedir.
+Anlık olarak yüksek akım çekimine inrush current denir.
+
+
