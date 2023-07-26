@@ -54,3 +54,12 @@ Bu da kısa devreye tekabül etmektedir.
 Anlık olarak yüksek akım çekimine inrush current denir.
 
 
+PWM kontrolcü için sıklıkla tercih edilen UC3842 entegresi kullanılmıştır.
+Maaliyet göz önüne alındığında feedback devresi zener diyot ile yapılmıştır. Tam 15 değil de 14.80 de yeterli diyebiliyorsak zener diyot kullanılabilir.
+
+Çıkış kapasitörü seçerken; DCM modda çalışırken çıkış akım ripple biraz yüksektir. 
+***Bobinin ortalama gerilim 0, capacitörün ortalama akımı 0'dır.
+Diyodun ortalama akımı çıkış akımına eşittir. Bu projede de 1A'e eşit olmalıdır.
+Yani 1A'den üstte olduğunda cap. şarj olurken, 1A'den altta olduğunda deşarj edecektir.
+100kHz'deki ripple akımının değeri 1,2mA olan cap. seçilmiştir.
+
